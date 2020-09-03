@@ -1,0 +1,230 @@
+@media screen and (max-width: 1125px) {
+    .product__container .product {
+        width: 24%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #home header {
+        padding: 0 0 0 5%;
+    }
+
+    #home header>div:nth-child(2) {
+        justify-content: flex-end;
+    }
+
+    #home .header__banner {
+        width: 300px;
+        height: 475px;
+    }
+
+    #home .header__banner img:nth-child(1) {
+        clip: rect(0px, 77px, 180px, 0px);
+        width: 150px;
+        margin: 80px -75px;
+    }
+
+    #home .header__banner img:nth-child(2) {
+        width: 50px;
+        margin: 200px -90px;
+    }
+
+    #home .header__banner img:nth-child(4),
+    #home .header__banner div {
+        width: 0;
+        margin: 0;
+    }
+
+    .product__container .product {
+        width: 31%;
+    }
+
+    #section__recommendation .product__container .product:nth-child(4),
+    #section__promotion .product__container .product:nth-child(4) {
+        display: none;
+    }
+
+    #section__ending>div {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .nav__link {
+        display: none;
+        flex-direction: column;
+        width: 200px;
+        padding: 15px;
+        position: absolute;
+        top: 75px;
+        right: 15px;
+        box-shadow: 0 2px 20px 1px rgba(0, 0, 0, .11);
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+    #nav__toogle {
+        display: flex;
+    }
+
+    #home h1,
+    #home h6 {
+        max-width: unset;
+    }
+
+    #home header {
+        flex-direction: column;
+        padding: 0 5%;
+    }
+
+    #home header>div {
+        width: 100%;
+    }
+
+    #home header>div:nth-child(1) {
+        max-width: 500px;
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    #home header>div:nth-child(2) {
+        margin: 30px -11% 0 0;
+    }
+
+    #home .header__banner {
+        display: flex;
+        align-items: center;
+        width: 60%;
+        height: 200px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 100px;
+    }
+
+    #home .header__banner img:nth-child(1) {
+        width: 0;
+        margin: 0;
+    }
+
+    #home .header__banner img:nth-child(2) {
+        width: 0;
+        margin: 0;
+    }
+
+    #home .header__banner img:nth-child(4) {
+        width: 145px;
+        margin: 0 0 0 -55%;
+    }
+
+    #home .header__banner img:nth-child(5) {
+        width: 150px;
+        margin: 0;
+        margin-left: 30px;
+    }
+
+    .product__container {
+        width: 105%;
+        margin-left: -5%;
+        padding-left: 5%;
+        padding-bottom: 25px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+    .product__container .product {
+        min-width: 250px;
+        margin-right: 20px;
+    }
+
+    .product__container .product__img {
+        width: 70%;
+        padding-top: 70%;
+    }
+
+    .product__container .product__rating {
+        width: 15px;
+        position: relative;
+    }
+
+    #section__recommendation .product__container .product:nth-child(4),
+    #section__promotion .product__container .product:nth-child(4) {
+        display: flex
+    }
+
+    #section__ending {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #section__ending img {
+        width: 75%;
+    }
+
+    #section__ending>div {
+        max-width: 500px;
+        width: 90%;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    footer>div {
+        width: 45%;
+    }
+
+    footer>div:nth-child(3) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 35px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    #home header>div:nth-child(1) {
+        margin-top: 70px;
+    }
+
+    #home header>div:nth-child(2) {
+        margin: 80px -11% 0 0;
+    }
+
+    #home .header__banner {
+        width: 75%;
+        height: 175px;
+    }
+
+    #home .header__banner img:nth-child(4) {
+        width: 120px;
+        margin: 0 0 0 -40%;
+    }
+
+    #home .header__banner img:nth-child(5) {
+        width: 125px;
+        margin: 0;
+        margin-left: 30px;
+    }
+
+    #home #main {
+        margin-top: -80px;
+        padding: 85px 5%;
+    }
+
+    #section__ending img {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    footer {
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+    }
+
+    footer>div:nth-child(1) {
+        margin-top: 25px;
+    }
+}

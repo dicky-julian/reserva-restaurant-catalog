@@ -4,7 +4,7 @@ const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/assets/scripts/index.js'),
+  entry: path.resolve(__dirname, 'src/index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -28,7 +28,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 8000, // Convert images < 8kb to base64 strings
-            name: 'img/[hash]-[name].[ext]'
+            name: 'image/[hash]-[name].[ext]'
           }
         }]
       }
