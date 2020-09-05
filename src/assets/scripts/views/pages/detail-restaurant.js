@@ -2,7 +2,7 @@ import urlParser from '../../routes/url-parser.js';
 import { fetchDetailRestaurant, addReview } from '../../data/api/restaurant.js';
 import { menuListItem, reviewListItem } from '../components/listItem.js';
 import { reviewFormItem } from '../components/formItem.js';
-import { checkElement } from '../../utils/element-helper.js';
+import { checkElement, checkMultiElement } from '../../utils/element-helper.js';
 import { badge } from '../components/badge.js';
 import CONFIG from '../../global/config.js';
 
@@ -108,6 +108,7 @@ const DetailRestaurant = {
     },
 
     async renderReviews(reviews, id_restaurant) {
+        console.log(reviews)
         checkElement('.review__container').then(() => {
             let reviewFieldIndex = 0;
 
@@ -142,11 +143,13 @@ const DetailRestaurant = {
 
         await addReview(dataReview).then((response) => {
             if (response) {
-                const reviewResult = response.customerReviews.slice(-1).pop();
-                checkElement(`.review__field__${reviewFieldIndex} .form__review`).then(el => {
-                    document.querySelector(`.review__field__${reviewFieldIndex + 1}`).appendChild(el);
-                    document.querySelector(`.review__field__${reviewFieldIndex}`).innerHTML += reviewListItem(reviewResult);
-                })
+                console.log(response)
+                const reviewResult = response.customerReviews;
+                checkMultiElement('.review__container > div').then(els => {
+                    els.forEach(el => el.innerHTML = '');
+                });
+
+                this.renderReviews(reviewResult, id_restaurant);
             }
         })
     }
