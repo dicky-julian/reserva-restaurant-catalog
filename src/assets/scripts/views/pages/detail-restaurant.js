@@ -1,16 +1,19 @@
 import urlParser from '../../routes/url-parser.js';
 import { fetchDetailRestaurant, addReview } from '../../data/api/restaurant.js';
+import { fetchIdFavorite } from '../../data/db/restaurant.js';
 import { menuListItem, reviewListItem } from '../components/listItem.js';
 import { reviewFormItem } from '../components/formItem.js';
 import { checkElement, checkMultiElement } from '../../utils/element-helper.js';
 import { badge } from '../components/badge.js';
 import CONFIG from '../../global/config.js';
+import { addFavorite } from '../../data/db/restaurant.js';
 
 const DetailRestaurant = {
     async render(dataRestaurant) {
 
         if (dataRestaurant) {
-            const { name, description, address, city, pictureId } = dataRestaurant;
+            const { id, name, description, address, city, pictureId, isAddedFavorite } = dataRestaurant;
+
             return `
                 <div id="detail__restaurant">
                     <div id="section__information">
@@ -26,8 +29,17 @@ const DetailRestaurant = {
                             <div class="categories__container"></div>
                             <div class="rating__container"></div>
                             <div class="add__favorite">
+                            ${isAddedFavorite ?
+                                `
+                                <img src="./images/icon-delete.png"/>
+                                <span class="text__danger text__bold">Remove from favorite</span>
+                                `
+                                :
+                                `
                                 <img src="./images/icon-add.png"/>
                                 <span class="text__default">Add to favorite</span>
+                                `
+                            }
                             </div>
                         </div>
                     </div>
@@ -47,7 +59,9 @@ const DetailRestaurant = {
                 </div>
             `;
         }
-        return '';
+        return `
+            <div>Loading</div>
+        `;
     },
 
     async afterRender() {
@@ -55,12 +69,16 @@ const DetailRestaurant = {
         const url = urlParser.parseActiveUrlWithoutCombiner();
         const id_restaurant = url.id;
         const dataRestaurant = await fetchDetailRestaurant(id_restaurant);
+        const dataIdFavorite = await fetchIdFavorite();
+        const isAddedFavorite = dataIdFavorite.includes(id_restaurant);
 
         if (dataRestaurant) {
             const restaurantCategories = dataRestaurant.categories;
             const restaurantRatings = Math.floor(dataRestaurant.rating);
             const restaurantMenus = dataRestaurant.menus;
             const restaurantReviews = dataRestaurant.consumerReviews;
+
+            dataRestaurant.isAddedFavorite = isAddedFavorite;
             // rerender page with restaurant's data
             wrapper.innerHTML = await this.render(dataRestaurant);
 
@@ -68,6 +86,7 @@ const DetailRestaurant = {
             this.renderRatings(restaurantRatings);
             this.renderMenus(restaurantMenus);
             this.renderReviews(restaurantReviews, id_restaurant);
+            this.addFavoriteListener(dataRestaurant);
         }
     },
 
@@ -108,7 +127,6 @@ const DetailRestaurant = {
     },
 
     async renderReviews(reviews, id_restaurant) {
-        console.log(reviews)
         checkElement('.review__container').then(() => {
             let reviewFieldIndex = 0;
 
@@ -143,7 +161,6 @@ const DetailRestaurant = {
 
         await addReview(dataReview).then((response) => {
             if (response) {
-                console.log(response)
                 const reviewResult = response.customerReviews;
                 checkMultiElement('.review__container > div').then(els => {
                     els.forEach(el => el.innerHTML = '');
@@ -151,6 +168,12 @@ const DetailRestaurant = {
 
                 this.renderReviews(reviewResult, id_restaurant);
             }
+        })
+    },
+
+    async addFavoriteListener(dataRestaurant) {
+        checkElement('.add__favorite').then(el => {
+            el.addEventListener('click', () => addFavorite(dataRestaurant));
         })
     }
 };

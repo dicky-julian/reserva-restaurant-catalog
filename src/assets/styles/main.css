@@ -2,6 +2,7 @@
     --primary: #b0765f;
     --secondary: #19344b;
     --light: #f9f3f1;
+    --danger: rgb(238 63 76);
     --default: rgb(175, 175, 175);
     --fade: #ebdada;
 }
@@ -72,7 +73,11 @@ h6 {
 }
 
 .text__default {
-    color: var(--default)
+    color: var(--default);
+}
+
+.text__danger {
+    color: var(--danger);
 }
 
 .text__roman {
@@ -452,17 +457,15 @@ footer a {
 }
 
 .product__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 23%);
+    grid-gap: 0 2.67%;
 }
 
 .product__container .product {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 23%;
     margin-top: 50px;
 }
 
@@ -588,4 +591,10 @@ footer a {
 
 .add__favorite span {
     margin-left: 25px;
+}
+
+/* Favorite Restaurant */
+#favorite {
+    padding: 50px 5% 85px;
+    background-color: var(--light);
 }

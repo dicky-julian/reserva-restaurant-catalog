@@ -9,6 +9,7 @@ const routes = {
   '/': Home,
   '/restaurant': Restaurant,
   '/restaurant/:id': DetailRestaurant,
+  '/favorite': Favorite,
   '404': Error404
 };
 

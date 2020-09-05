@@ -4,7 +4,7 @@ import './assets/styles/responsive.css';
 import setNavbar from './assets/scripts/views/components/navbar.js';
 
 import App from './app.js';
-import swRegister from './assets/scripts/utils/sw-register.js';
+// import swRegister from './assets/scripts/utils/sw-register.js';
 
 const app = new App();
 

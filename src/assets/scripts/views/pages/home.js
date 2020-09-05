@@ -1,5 +1,5 @@
 import { fetchAllRestaurant } from '../../data/api/restaurant.js';
-import { restaurantListItem } from '../components/listItem';
+import { restaurantListItem } from '../components/listItem.js';
 
 const Home = {
     async render() {
