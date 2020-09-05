@@ -2,6 +2,8 @@
     --primary: #b0765f;
     --secondary: #19344b;
     --light: #f9f3f1;
+    --default: rgb(175, 175, 175);
+    --fade: #ebdada;
 }
 
 * {
@@ -16,7 +18,7 @@ body {
     margin: 0;
 }
 
-a {
+a, label {
     font-size: 15px;
     color: #000;
     text-decoration: none;
@@ -33,6 +35,7 @@ h4,
 h5,
 h6 {
     margin: 0;
+    margin-bottom: 15px;
 }
 
 h1 {
@@ -68,6 +71,10 @@ h6 {
     color: var(--secondary);
 }
 
+.text__default {
+    color: var(--default)
+}
+
 .text__roman {
     font-family: 'Times New Roman', Times, serif;
 }
@@ -82,6 +89,10 @@ h6 {
 
 .text__center {
     text-align: center;
+}
+
+.text__justify {
+    text-align: justify;
 }
 
 .bt {
@@ -111,6 +122,19 @@ h6 {
     background: #11273b;
 }
 
+.input__bottom__line {
+    padding: 10px;
+    border: 0;
+    border-bottom: 1px solid var(--fade);
+}
+
+.input__bottom__line:focus {
+    padding-bottom: 25px;
+    transition: .3s;
+    border-color: #e6aaaa;
+    outline-width: 0;
+}
+
 /* NAVBAR */
 nav {
     display: flex;
@@ -137,10 +161,6 @@ nav a:hover {
 nav a.active {
     border-bottom: 1px solid var(--primary);
     color: var(--primary);
-}
-
-.nav__link {
-    display: block;
 }
 
 #nav__toogle {
@@ -215,6 +235,33 @@ footer a {
     margin-left: 15px;
 }
 
+/* BADGE */
+
+.badge__container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 15px 30px 0;
+    padding: 7px 10px;
+    background-color: var(--default);
+    border-radius: 5px;
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+}
+
+.badge__hole {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--light);
+}
+
+.badge__container span {
+    font-size: 13px;
+    margin-left: 30px;
+    color: var(--light);
+}
+
 /* HOME */
 
 /* Header */
@@ -232,8 +279,8 @@ footer a {
 #home h1,
 #home h6 {
     max-width: 450px;
-    margin-bottom: 25px;
     letter-spacing: 1px;
+    margin-bottom: 25px;
 }
 
 #home .bt {
@@ -388,4 +435,155 @@ footer a {
     width: 450px;
     max-width: 50%;
     margin-top: 75px;
+}
+
+/* Detail Restaurant */
+
+#detail__restaurant {
+    padding: 50px 5% 0;
+}
+
+#detail__restaurant > div {
+    padding-bottom: 85px;
+}
+
+#section__information {
+    display: flex;
+}
+
+#section__information > div {
+    width: 50%;
+}
+
+.restaurant__picture .img {
+    display: flex;
+    justify-content: flex-end;
+    width: 70%;
+    padding-top: 70%;
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.restaurant__picture .transparent__block {
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    margin-top: -70px;
+    margin-right: -60px;
+    background-color: #000;
+    opacity: .3;
+    border-radius: 10px;
+}
+
+.rating__container img {
+    width: 30px;
+    margin-right: 5px;
+}
+
+.add__favorite {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.add__favorite:hover {
+    transition: .3s;
+    opacity: .5;
+}
+
+.add__favorite img {
+    width: 30px;
+}
+
+.add__favorite span {
+    margin-left: 25px;
+}
+
+/* MENU LIST ITEM */
+
+.menu__container, .review__container {
+    display: grid;
+    grid-template-columns: repeat(4, calc(25% - 7.5px));
+    grid-gap: 0 10px;
+    margin-top: 50px;
+}
+
+.menu__container > div {
+    margin-bottom: 15px;
+}
+
+.menu__container img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.menu__container img:hover {
+    transition: .3s;
+    opacity: .7;
+}
+
+.menu__container h6 {
+    margin: 15px 0 0;
+    text-transform: capitalize;
+}
+
+/* REVIEW LIST ITEM */
+
+.review {
+    margin-bottom: 10px;
+}
+
+.comment__container {
+    padding: 0 15px;
+    border: 1px solid var(--fade);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.comment__container img {
+    width: 40px;
+    height: 40px;
+    margin-top: 15px;
+    position: absolute;
+}
+
+.comment__container h5 {
+    margin: 70px 0 30px;
+}
+
+.comment__info {
+    padding: 15px;
+    background-color: var(--fade);
+}
+
+.comment__info h6 {
+    margin-bottom: 5px;
+}
+
+.comment__info span {
+    font-size: 13px;
+}
+
+/* REVIEW FORM ITEM */
+
+.form__review {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 15px;
+    background-color: #fff;
+    border: 1px solid var(--fade);
+    border-radius: 5px;
+}
+
+.form__review input, .form__review textarea {
+    width: calc(100% - 30px);
+    margin-bottom: 15px;
+}
+
+.form__review button {
+    width: fit-content;
+    align-self: flex-end;
 }

@@ -5,7 +5,8 @@ class App {
     async renderPage() {
         const wrapper = document.querySelector('main');
         const url = urlParser.parseActiveUrlWithCombiner();
-        const page = routes[url];
+        const page = routes[url] || routes['404'];
+        
         wrapper.innerHTML = await page.render();
         await page.afterRender();
     }

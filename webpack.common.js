@@ -1,3 +1,4 @@
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
@@ -28,13 +29,14 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 8000, // Convert images < 8kb to base64 strings
-            name: 'image/[hash]-[name].[ext]'
+            name: 'images/[hash]-[name].[ext]'
           }
         }]
       }
     ],
   },
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/templates/index.html'),
       filename: 'index.html',

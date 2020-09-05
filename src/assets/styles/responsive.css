@@ -49,6 +49,12 @@
     }
 }
 
+@media screen and (min-width: 800px) {
+    .nav__link {
+        display: block !important;
+    }
+}
+
 @media screen and (max-width: 800px) {
     .nav__link {
         display: none;
