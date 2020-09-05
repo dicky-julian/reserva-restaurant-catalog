@@ -36,7 +36,7 @@ const DetailRestaurant = {
                         <div class="menu__container"></div>
                     </div>
                     <div id="section__review">
-                        <h2 class="text__roman text__thin text__primary">What people say about ${name} ?</h2>
+                        <h2 class="text__roman text__thin text__primary">What people say about ${name}?</h2>
                         <div class="review__container">
                             <div class="review__field__1"></div>
                             <div class="review__field__2"></div>

@@ -1,0 +1,11 @@
+{
+    "name": "Reserva Restaurant Catalog",
+    "short_name": "Reserva",
+    "description": "Cheap, Locality, Seasonality and Accessibility restaurant in personal level just for you.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#b0765f",
+    "icons": [
+    ]
+  }
