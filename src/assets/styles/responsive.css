@@ -105,18 +105,32 @@
     .nav__link {
         display: none;
         flex-direction: column;
-        width: 200px;
-        padding: 15px;
+        width: 250px;
+        max-width: 85%;
+        padding: 10px;
         position: absolute;
         top: 75px;
-        right: 15px;
+        right: 3%;
         box-shadow: 0 2px 20px 1px rgba(0, 0, 0, .11);
         border-radius: 5px;
         background-color: #fff;
+        z-index: 2;
     }
 
     #nav__toogle {
         display: flex;
+    }
+
+    nav a.active {
+        background-color: var(--light);
+        color: var(--primary);
+        border-radius: 5px;
+        border-bottom: none;
+    }
+
+    .nav__link {
+        width: 250px;
+        padding: 10px;
     }
 
     /* HOME */
@@ -219,6 +233,10 @@
         padding: 30px 5% 0;
     }
 
+    #detail__restaurant > div {
+        padding-bottom: 35px;
+    }
+
     .restaurant__picture {
         margin-bottom: 20px;
     }
@@ -293,6 +311,12 @@
 
     footer>div:nth-child(1) {
         margin-top: 25px;
+    }
+
+    /* Alert */
+    
+    #alert__wrapper {
+        width: 90%;
     }
 
     /* Detail Restaurant */

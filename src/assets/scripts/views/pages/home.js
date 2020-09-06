@@ -15,11 +15,11 @@ const Home = {
                     </div>
                     <div>
                         <div class="header__banner">
-                            <img src="./images/product_icon_192.png" alt="">
-                            <img src="./images/product_icon_192.png" alt="">
+                            <img src="./images/product_icon_192.webp" alt="">
+                            <img src="./images/product_icon_192.webp" alt="">
                             <span></span>
-                            <img src="./images/food_cup_2.png" alt="" class="banner__cup">
-                            <img src="./images/food_cup_1.png" alt="" class="banner__cup">
+                            <img src="./images/food_cup_2.webp" alt="" class="banner__cup">
+                            <img src="./images/food_cup_1.webp" alt="" class="banner__cup">
                             <div></div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@ const Home = {
                     </div>
                 </div>
                 <div id="section__ending">
-                    <img src="./images/ending_image.jpg" alt="revire restaurant" />
+                    <img src="./images/ending_image.webp" alt="revire restaurant" />
                     <div>
                         <h2 class="text__roman text__thin text__primary">Want us to review your restaurant?</h2>
                         <h6>

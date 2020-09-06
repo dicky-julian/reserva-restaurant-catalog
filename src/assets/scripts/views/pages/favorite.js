@@ -8,6 +8,9 @@ const Favorite = {
             <div id="favorite">
                 <h2 class="text__roman text__thin text__primary">Favorite Place</h2>
                 <div class="product__container"></div>
+                <div class="information__container">
+                    <img src="./images/not-found.webp" />
+                </div>
             </div>
         `;
     },
@@ -15,11 +18,17 @@ const Favorite = {
     async afterRender() {
         const dataRestaurant = await fetchAllFavorite();
 
-        checkElement('#favorite .product__container').then(el => {
-            dataRestaurant.forEach(restaurant => {
-                el.innerHTML += restaurantListItem(restaurant);
-            })
-        })
+        if (dataRestaurant.length) {
+            checkElement('.information__container').then(el => {
+                el.remove();
+            });
+
+            checkElement('#favorite .product__container').then(el => {
+                dataRestaurant.forEach(restaurant => {
+                    el.innerHTML += restaurantListItem(restaurant);
+                })
+            });
+        }
     }
 };
 

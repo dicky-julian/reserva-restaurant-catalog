@@ -3,6 +3,7 @@ import { fetchDetailRestaurant, addReview } from '../../data/api/restaurant.js';
 import { fetchIdFavorite, addFavorite, deleteFavorite } from '../../data/db/restaurant.js';
 import { menuListItem, reviewListItem } from '../components/listItem.js';
 import { reviewFormItem } from '../components/formItem.js';
+import { alert } from '../components/alert.js';
 import { checkElement, checkMultiElement } from '../../utils/element-helper.js';
 import { badge } from '../components/badge.js';
 import CONFIG from '../../global/config.js';
@@ -29,21 +30,20 @@ const DetailRestaurant = {
                             <div class="rating__container"></div>
                             
                             ${isAddedFavorite ?
-                    `
+                            `
                                 <div class="add__favorite" aria-label="delete favorite" role="button">
-                                    <img src="./images/icon-delete.png"/>
+                                    <img src="./images/icon-delete.webp"/>
                                     <span class="text__danger text__bold">Remove from favorite</span>
                                 </div>
                                 `
-                    :
-                    `
+                            :
+                            `
                                 <div class="add__favorite" aria-label="add favorite" role="button">
-                                    <img src="./images/icon-add.png"/>
+                                    <img src="./images/icon-add.webp"/>
                                     <span class="text__default">Add to favorite</span>
                                 </div>
-                                `
-                }
-                            </div>
+                            `
+                            }
                         </div>
                     </div>
                     <div id="section__menu">
@@ -106,11 +106,11 @@ const DetailRestaurant = {
             const unChecklistRating = 5 - ratings;
 
             for (let rating = 0; rating < ratings; rating++) {
-                el.innerHTML += '<img src="./images/icon-star-add.png" />'
+                el.innerHTML += '<img src="./images/icon-star-add.webp" />'
             }
 
             for (let rating = 0; rating < unChecklistRating; rating++) {
-                el.innerHTML += `<img src="./images/icon-star-remove.png" />`
+                el.innerHTML += `<img src="./images/icon-star-remove.webp" />`
             }
         })
     },
@@ -145,14 +145,11 @@ const DetailRestaurant = {
 
             reviewFieldIndex > 3 ? reviewFieldIndex = 1 : ++reviewFieldIndex;
             document.querySelector(`.review__field__${reviewFieldIndex}`).innerHTML += reviewFormItem();
-            return reviewFieldIndex;
-        }).then((reviewFieldIndex) => {
-            const reviewFormButton = document.querySelector('.form__review button');
-            reviewFormButton.addEventListener('click', () => this.submitReviews(id_restaurant, reviewFieldIndex));
+            document.querySelector('.form__review button').addEventListener('click', () => this.submitReviews(id_restaurant));
         })
     },
 
-    async submitReviews(id_restaurant, reviewFieldIndex) {
+    async submitReviews(id_restaurant) {
         const reviewName = document.querySelector('.form__review input').value;
         const reviewMessage = document.querySelector('.form__review textarea').value;
 
@@ -168,8 +165,10 @@ const DetailRestaurant = {
                 checkMultiElement('.review__container > div').then(els => {
                     els.forEach(el => el.innerHTML = '');
                 });
-
+                alert('Succesfully added review', 'success');
                 this.renderReviews(reviewResult, id_restaurant);
+            } else {
+                alert('Failed when adding review', 'fail');
             }
         })
     },
@@ -196,11 +195,13 @@ const DetailRestaurant = {
         await addFavorite(dataRestaurant)
             .then(() => {
                 buttonElement.setAttribute('aria-label', 'delete favorite');
-                buttonImage.src = './images/icon-delete.png';
+                buttonImage.src = './images/icon-delete.webp';
                 buttonElement.querySelector('span').remove();
                 buttonElement.innerHTML += '<span class="text__danger text__bold">Remove from favorite</span>';
+                alert('Succesfully added to favorite', 'success');
             })
             .catch((error) => {
+                alert('Failed when adding favorite', 'fail');
                 console.log(error)
             })
     },
@@ -212,11 +213,13 @@ const DetailRestaurant = {
         await deleteFavorite(id_restaurant)
             .then(() => {
                 buttonElement.setAttribute('aria-label', 'add favorite');
-                buttonImage.src = './images/icon-add.png';
+                buttonImage.src = './images/icon-add.webp';
                 buttonElement.querySelector('span').remove();
                 buttonElement.innerHTML += '<span class="text__default">Add to favorite</span>';
+                alert('Succesfully removed from favorite', 'success');
             })
             .catch((error) => {
+                alert('Failed when deleting favorite', 'fail');
                 console.log(error)
             })
     }

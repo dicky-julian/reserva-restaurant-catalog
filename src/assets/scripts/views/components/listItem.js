@@ -19,7 +19,7 @@ const restaurantListItem = ({ id, name, description, city, rating, pictureId }) 
 
 const menuListItem = ({ name, type }) => `
     <div>
-        <img src="./images/bg-${type}-default.jpg"/>
+        <img src="./images/bg-${type}-default.webp"/>
         <h6>${name}</h6>
         ${badge(type)}
     </div>  
@@ -28,7 +28,7 @@ const menuListItem = ({ name, type }) => `
 const reviewListItem = ({ name, review, date }) => `
     <div class="review">
         <div class="comment__container">
-            <img src="./images/icon-quote.png" alt="quote icon" />
+            <img src="./images/icon-quote.webp" alt="quote icon" />
             <h5 class="text__thin">${review}</h5>
         </div>
         <div class="comment__info">

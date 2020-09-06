@@ -28,6 +28,10 @@ const fetchDetailRestaurant = (async (id) => {
 });
 
 const addReview = (async (dataReview) => {
+    const { id, name, review } = dataReview;
+
+    if (!id || !name || !review) return false;
+
     const data = await fetch(API_ENDPOINT.ADD_REVIEW, {
         method: 'POST',
         headers: {
