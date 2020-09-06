@@ -19,8 +19,13 @@ const addFavorite = (async (restaurant) => {
     return (await dbPromise).put(storeName, restaurant);
 });
 
+const deleteFavorite = (async (id_restaurant) => {
+    return (await dbPromise).delete(storeName, id_restaurant);
+})
+
 export {
     fetchAllFavorite,
     fetchIdFavorite,
-    addFavorite
+    addFavorite,
+    deleteFavorite
 }

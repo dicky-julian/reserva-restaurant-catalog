@@ -1,18 +1,17 @@
 import urlParser from '../../routes/url-parser.js';
 import { fetchDetailRestaurant, addReview } from '../../data/api/restaurant.js';
-import { fetchIdFavorite } from '../../data/db/restaurant.js';
+import { fetchIdFavorite, addFavorite, deleteFavorite } from '../../data/db/restaurant.js';
 import { menuListItem, reviewListItem } from '../components/listItem.js';
 import { reviewFormItem } from '../components/formItem.js';
 import { checkElement, checkMultiElement } from '../../utils/element-helper.js';
 import { badge } from '../components/badge.js';
 import CONFIG from '../../global/config.js';
-import { addFavorite } from '../../data/db/restaurant.js';
 
 const DetailRestaurant = {
     async render(dataRestaurant) {
 
         if (dataRestaurant) {
-            const { id, name, description, address, city, pictureId, isAddedFavorite } = dataRestaurant;
+            const { name, description, address, city, pictureId, isAddedFavorite } = dataRestaurant;
 
             return `
                 <div id="detail__restaurant">
@@ -28,18 +27,22 @@ const DetailRestaurant = {
                             <h6 class="text__thin text__justify">${description}</h6>
                             <div class="categories__container"></div>
                             <div class="rating__container"></div>
-                            <div class="add__favorite">
+                            
                             ${isAddedFavorite ?
+                    `
+                                <div class="add__favorite" aria-label="delete favorite" role="button">
+                                    <img src="./images/icon-delete.png"/>
+                                    <span class="text__danger text__bold">Remove from favorite</span>
+                                </div>
                                 `
-                                <img src="./images/icon-delete.png"/>
-                                <span class="text__danger text__bold">Remove from favorite</span>
+                    :
+                    `
+                                <div class="add__favorite" aria-label="add favorite" role="button">
+                                    <img src="./images/icon-add.png"/>
+                                    <span class="text__default">Add to favorite</span>
+                                </div>
                                 `
-                                :
-                                `
-                                <img src="./images/icon-add.png"/>
-                                <span class="text__default">Add to favorite</span>
-                                `
-                            }
+                }
                             </div>
                         </div>
                     </div>
@@ -172,9 +175,50 @@ const DetailRestaurant = {
     },
 
     async addFavoriteListener(dataRestaurant) {
-        checkElement('.add__favorite').then(el => {
-            el.addEventListener('click', () => addFavorite(dataRestaurant));
+        checkElement('.add__favorite').then(buttonElement => {
+            buttonElement.addEventListener('click', () => this.handleDataFavorite(dataRestaurant, buttonElement));
         })
+    },
+
+    async handleDataFavorite(dataRestaurant, buttonElement) {
+        const elementRole = buttonElement.getAttribute('aria-label');
+        const isAddButton = elementRole === 'add favorite';
+        const buttonImage = buttonElement.querySelector('img');
+
+        buttonImage.src = './images/loading-spinner.webp';
+
+        isAddButton ? await this.addDataFavorite(dataRestaurant, buttonElement) : await this.deleteDataFavorite(dataRestaurant, buttonElement);
+    },
+
+    async addDataFavorite(dataRestaurant, buttonElement) {
+        const buttonImage = buttonElement.querySelector('img');
+
+        await addFavorite(dataRestaurant)
+            .then(() => {
+                buttonElement.setAttribute('aria-label', 'delete favorite');
+                buttonImage.src = './images/icon-delete.png';
+                buttonElement.querySelector('span').remove();
+                buttonElement.innerHTML += '<span class="text__danger text__bold">Remove from favorite</span>';
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    },
+
+    async deleteDataFavorite(dataRestaurant, buttonElement) {
+        const id_restaurant = dataRestaurant.id;
+        const buttonImage = buttonElement.querySelector('img');
+
+        await deleteFavorite(id_restaurant)
+            .then(() => {
+                buttonElement.setAttribute('aria-label', 'add favorite');
+                buttonImage.src = './images/icon-add.png';
+                buttonElement.querySelector('span').remove();
+                buttonElement.innerHTML += '<span class="text__default">Add to favorite</span>';
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 };
 
