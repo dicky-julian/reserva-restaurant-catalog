@@ -4,8 +4,8 @@ import CONFIG from '../../global/config.js';
 const restaurantListItem = ({ id, name, description, city, rating, pictureId }) => `
     <div class="product">
         <div class="product__img"
-            role='img' 
-            aria-label=${name}
+            role="img" 
+            aria-label="${name}"
             style="background-image: url('${CONFIG.BASE_IMAGE_URL}/${pictureId}')">
             <div class="product__rating">${rating}</div>
         </div>
@@ -19,7 +19,7 @@ const restaurantListItem = ({ id, name, description, city, rating, pictureId }) 
 
 const menuListItem = ({ name, type }) => `
     <div>
-        <img src="./images/bg-${type}-default.webp"/>
+        <img src="./images/bg-${type}-default.webp" alt="default image ${type}"/>
         <h6>${name}</h6>
         ${badge(type)}
     </div>  
@@ -28,7 +28,7 @@ const menuListItem = ({ name, type }) => `
 const reviewListItem = ({ name, review, date }) => `
     <div class="review">
         <div class="comment__container">
-            <img src="./images/icon-quote.webp" alt="quote icon" />
+            <img src="./images/icon-quote.webp" alt="quote icon" alt="icon quote" />
             <h5 class="text__thin">${review}</h5>
         </div>
         <div class="comment__info">

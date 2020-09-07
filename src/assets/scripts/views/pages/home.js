@@ -1,5 +1,7 @@
 import { fetchAllRestaurant } from '../../data/api/restaurant.js';
 import { restaurantListItem } from '../components/listItem.js';
+import { handleScrollToElement } from '../../utils/scroll-helper.js';
+import { checkElement } from '../../utils/element-helper.js';
 
 const Home = {
     async render() {
@@ -11,15 +13,15 @@ const Home = {
                         <h6 class="text__thin">
                             Cheap, Locality, Seasonality and Accessibility restaurant in personal level just for you.
                         </h6>
-                        <button class="bt bt__secondary" onclick="console.log('mangan')" tabindex="6">See Restaurant</button>
+                        <button id="see__restaurant" class="bt bt__secondary" tabindex="6">See Restaurant</button>
                     </div>
                     <div>
                         <div class="header__banner">
-                            <img src="./images/product_icon_192.webp" alt="">
-                            <img src="./images/product_icon_192.webp" alt="">
+                            <img src="./product-icon-192.webp" alt="reserva icon">
+                            <img src="./product-icon-192.webp" alt="reserva icon">
                             <span></span>
-                            <img src="./images/food_cup_2.webp" alt="" class="banner__cup">
-                            <img src="./images/food_cup_1.webp" alt="" class="banner__cup">
+                            <img src="./images/food_cup_2.webp" alt="image cup of food" class="banner__cup">
+                            <img src="./images/food_cup_1.webp" alt="image cup of food" class="banner__cup">
                             <div></div>
                         </div>
                     </div>
@@ -58,6 +60,8 @@ const Home = {
             await this.fetchPopularRestaurant(listRestaurants);
             await this.fetchNewRestaurant(listRestaurants);
         }
+
+        await this.setScrollListener('#see__restaurant', '#main');
     },
 
     async fetchPopularRestaurant(restaurants) {
@@ -79,6 +83,12 @@ const Home = {
         newRestaurants.forEach(restaurant => {
             newRestaurantElement.innerHTML += restaurantListItem(restaurant);
         });
+    },
+
+    async setScrollListener(elementFrom, elementTo) {
+        checkElement(elementFrom).then(element => {
+            element.addEventListener('click', () => handleScrollToElement(elementTo));
+        })
     }
 };
 

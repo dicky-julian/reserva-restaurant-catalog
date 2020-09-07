@@ -399,6 +399,20 @@ footer a {
     align-self: flex-end;
 }
 
+/* LOADING */
+
+.loading__container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50vh;
+}
+
+.loading__container img {
+    width: 100px;
+}
+
 /* HOME */
 
 /* Header */
@@ -642,14 +656,15 @@ footer a {
 }
 
 .information__container {
-    display: flex;
+    display: inline-flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: 75vh;
+    min-height: calc(80vh - 70px);
 }
 
 .information__container img {
     width: 500px;
-    max-width: 100%;
+    max-width: 80%;
 }

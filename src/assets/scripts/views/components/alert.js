@@ -4,7 +4,7 @@ const alert = (message, role) => {
     const element = `
         <div class="alert ${role === 'success' ? 'alert__success' : 'alert__danger'}">
             ${message}
-            <img src="./images/icon-close.webp" />
+            <img src="./images/icon-close.webp" alt="icon close" />
         </div>
     `;
 

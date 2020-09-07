@@ -1,4 +1,5 @@
 import { checkElement, checkMultiElement } from '../../utils/element-helper.js';
+import { scrollToElement } from '../../utils/scroll-helper.js';
 
 const setToogleNavbar = () => {
     checkElement('#nav__toogle').then(element => {
@@ -28,9 +29,21 @@ const setActiveNavbar = () => {
     })
 }
 
+const setSkipContent = () => {
+    checkElement('#skip__content').then(buttonElement => {
+        buttonElement.addEventListener('click', () => {
+            checkElement('main').then(pageElement => {
+                scrollToElement(pageElement, 200);
+                buttonElement.remove();
+            })
+        })
+    })
+}
+
 const setNavbar = () => {
     setToogleNavbar();
     setActiveNavbar();
+    setSkipContent();
 }
 
 export default setNavbar;

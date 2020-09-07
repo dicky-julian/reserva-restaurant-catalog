@@ -61,6 +61,7 @@
 
     .product__container .product {
         min-width: 250px;
+        width: 250px;
         margin-right: 20px;
     }
 
@@ -330,5 +331,10 @@
 
     .review__field__3, .review__field__4 {
         display: block;
+    }
+
+    .information__container h3 {
+        margin-top: 10px;
+        font-size: 20px;
     }
 }

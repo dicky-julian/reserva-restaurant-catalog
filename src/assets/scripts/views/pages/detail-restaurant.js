@@ -32,14 +32,14 @@ const DetailRestaurant = {
                             ${isAddedFavorite ?
                             `
                                 <div class="add__favorite" aria-label="delete favorite" role="button">
-                                    <img src="./images/icon-delete.webp"/>
+                                    <img src="./images/icon-delete.webp" alt="icon delete"/>
                                     <span class="text__danger text__bold">Remove from favorite</span>
                                 </div>
                                 `
                             :
                             `
                                 <div class="add__favorite" aria-label="add favorite" role="button">
-                                    <img src="./images/icon-add.webp"/>
+                                    <img src="./images/icon-add.webp" alt="icon add"/>
                                     <span class="text__default">Add to favorite</span>
                                 </div>
                             `
@@ -63,7 +63,9 @@ const DetailRestaurant = {
             `;
         }
         return `
-            <div>Loading</div>
+            <div class="loading__container">
+                <img src="./images/loading-spinner.webp" alt="loading spinner" />
+            </div>
         `;
     },
 
@@ -106,11 +108,11 @@ const DetailRestaurant = {
             const unChecklistRating = 5 - ratings;
 
             for (let rating = 0; rating < ratings; rating++) {
-                el.innerHTML += '<img src="./images/icon-star-add.webp" />'
+                el.innerHTML += '<img src="./images/icon-star-add.webp" alt="icon star rating" />'
             }
 
             for (let rating = 0; rating < unChecklistRating; rating++) {
-                el.innerHTML += `<img src="./images/icon-star-remove.webp" />`
+                el.innerHTML += `<img src="./images/icon-star-remove.webp" alt="icon star rating" />`
             }
         })
     },

@@ -1,11 +1,21 @@
 {
-    "name": "Reserva Restaurant Catalog",
-    "short_name": "Reserva",
-    "description": "Cheap, Locality, Seasonality and Accessibility restaurant in personal level just for you.",
-    "start_url": "/index.html",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#b0765f",
-    "icons": [
-    ]
-  }
+  "name": "Reserva Restaurant Catalog",
+  "short_name": "Reserva",
+  "description": "Cheap, Locality, Seasonality and Accessibility restaurant in personal level just for you.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#b0765f",
+  "icons": [
+    {
+      "src": "product-icon-192.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "product-icon-512.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

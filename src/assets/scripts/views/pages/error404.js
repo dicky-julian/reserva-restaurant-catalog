@@ -1,7 +1,12 @@
 const Error404 = {
     async render() {
         return `
-            <h1>Error 404</h1>
+            <div id="main">
+                <div class="information__container">
+                    <img src="./images/bg-error-404.png" alt="page's not found image" />
+                    <h3>Page not found</h3>
+                </div>
+            </div>
         `;
     },
 
