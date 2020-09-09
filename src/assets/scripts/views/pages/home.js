@@ -1,11 +1,11 @@
-import { fetchAllRestaurant } from '../../data/api/restaurant.js';
-import { restaurantListItem } from '../components/listItem.js';
-import { handleScrollToElement } from '../../utils/scroll-helper.js';
-import { checkElement } from '../../utils/element-helper.js';
+import { fetchAllRestaurant } from '../../data/api/restaurant';
+import { restaurantListItem } from '../components/listItem';
+import { handleScrollToElement } from '../../utils/scroll-helper';
+import { checkElement } from '../../utils/element-helper';
 
 const Home = {
-    async render() {
-        return `
+  async render() {
+    return `
             <div id="home">
                 <header>
                     <div>
@@ -17,8 +17,8 @@ const Home = {
                     </div>
                     <div>
                         <div class="header__banner">
-                            <img src="./product-icon-192.webp" alt="reserva icon">
-                            <img src="./product-icon-192.webp" alt="reserva icon">
+                            <img src="./product-icon-192.png" alt="reserva icon">
+                            <img src="./product-icon-192.png" alt="reserva icon">
                             <span></span>
                             <img src="./images/food_cup_2.webp" alt="image cup of food" class="banner__cup">
                             <img src="./images/food_cup_1.webp" alt="image cup of food" class="banner__cup">
@@ -52,44 +52,44 @@ const Home = {
                 </div>
             </div>
         `;
-    },
+  },
 
-    async afterRender() {
-        const listRestaurants = await fetchAllRestaurant();
-        if (listRestaurants) {
-            await this.fetchPopularRestaurant(listRestaurants);
-            await this.fetchNewRestaurant(listRestaurants);
-        }
-
-        await this.setScrollListener('#see__restaurant', '#main');
-    },
-
-    async fetchPopularRestaurant(restaurants) {
-        const popularRestaurantElement = document.querySelector('#section__popular .product__container');
-        const popularRestaurants = [...restaurants]
-            .sort((firstData, lastData) => lastData.rating - firstData.rating)
-            .slice(1, 5);
-
-        popularRestaurants.forEach(restaurant => {
-            popularRestaurantElement.innerHTML += restaurantListItem(restaurant);
-        });
-    },
-
-    async fetchNewRestaurant(restaurants) {
-        const newRestaurantElement = document.querySelector('#section__new .product__container');
-        const newRestaurants = restaurants
-            .slice(restaurants.length - 4, restaurants.length);
-
-        newRestaurants.forEach(restaurant => {
-            newRestaurantElement.innerHTML += restaurantListItem(restaurant);
-        });
-    },
-
-    async setScrollListener(elementFrom, elementTo) {
-        checkElement(elementFrom).then(element => {
-            element.addEventListener('click', () => handleScrollToElement(elementTo));
-        })
+  async afterRender() {
+    const listRestaurants = await fetchAllRestaurant();
+    if (listRestaurants) {
+      await this.fetchPopularRestaurant(listRestaurants);
+      await this.fetchNewRestaurant(listRestaurants);
     }
+
+    await this.setScrollListener('#see__restaurant', '#main');
+  },
+
+  async fetchPopularRestaurant(restaurants) {
+    const popularRestaurantElement = document.querySelector('#section__popular .product__container');
+    const popularRestaurants = [...restaurants]
+      .sort((firstData, lastData) => lastData.rating - firstData.rating)
+      .slice(1, 5);
+
+    popularRestaurants.forEach((restaurant) => {
+      popularRestaurantElement.innerHTML += restaurantListItem(restaurant);
+    });
+  },
+
+  async fetchNewRestaurant(restaurants) {
+    const newRestaurantElement = document.querySelector('#section__new .product__container');
+    const newRestaurants = restaurants
+      .slice(restaurants.length - 4, restaurants.length);
+
+    newRestaurants.forEach((restaurant) => {
+      newRestaurantElement.innerHTML += restaurantListItem(restaurant);
+    });
+  },
+
+  async setScrollListener(elementFrom, elementTo) {
+    checkElement(elementFrom).then((element) => {
+      element.addEventListener('click', () => handleScrollToElement(elementTo));
+    });
+  },
 };
 
 export default Home;

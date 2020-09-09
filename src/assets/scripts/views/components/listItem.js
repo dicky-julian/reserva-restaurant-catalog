@@ -1,7 +1,9 @@
-import { badge } from '../components/badge.js';
-import CONFIG from '../../global/config.js';
+import { badge } from './badge';
+import CONFIG from '../../global/config';
 
-const restaurantListItem = ({ id, name, description, city, rating, pictureId }) => `
+const restaurantListItem = ({
+  id, name, description, city, rating, pictureId,
+}) => `
     <div class="product">
         <div class="product__img"
             role="img" 
@@ -39,7 +41,7 @@ const reviewListItem = ({ name, review, date }) => `
 `;
 
 export {
-    restaurantListItem,
-    menuListItem,
-    reviewListItem
-}
+  restaurantListItem,
+  menuListItem,
+  reviewListItem,
+};

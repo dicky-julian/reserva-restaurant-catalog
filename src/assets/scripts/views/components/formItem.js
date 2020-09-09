@@ -5,8 +5,8 @@ const reviewFormItem = () => `
         <textarea class="input__bottom__line" placeholder="Message"></textarea>
         <button class="bt bt__primary">Send</button>
     </div>
-`
+`;
 
 export {
-    reviewFormItem
-}
+  reviewFormItem,
+};
