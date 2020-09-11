@@ -32,13 +32,13 @@ const DetailRestaurant = {
                             
                             ${isAddedFavorite
     ? `
-                                <div class="add__favorite" aria-label="delete favorite" role="button">
+                                <div class="add__favorite" aria-label="delete favorite" role="button" tabindex="3">
                                     <img src="./images/icon-delete.webp" alt="icon delete"/>
                                     <span class="text__danger text__bold">Remove from favorite</span>
                                 </div>
                                 `
     : `
-                                <div class="add__favorite" aria-label="add favorite" role="button">
+                                <div class="add__favorite" aria-label="add favorite" role="button" tabindex="3">
                                     <img src="./images/icon-add.webp" alt="icon add"/>
                                     <span class="text__default">Add to favorite</span>
                                 </div>

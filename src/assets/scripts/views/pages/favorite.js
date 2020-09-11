@@ -8,9 +8,9 @@ const Favorite = {
             <div id="favorite">
                 <h2 class="text__roman text__thin text__primary">Favorite Place</h2>
                 <div class="product__container"></div>
-                <div class="loading__container">
+                <a class="loading__container">
                     <img src="./images/loading-spinner.webp" alt="loading spinner" />
-                </div>
+                </a>
             </div>
         `;
   },

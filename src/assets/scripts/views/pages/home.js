@@ -13,7 +13,7 @@ const Home = {
                         <h6 class="text__thin">
                             Cheap, Locality, Seasonality and Accessibility restaurant in personal level just for you.
                         </h6>
-                        <button id="see__restaurant" class="bt bt__secondary" tabindex="6">See Restaurant</button>
+                        <button id="see__restaurant" class="bt bt__secondary" tabindex="5">See Restaurant</button>
                     </div>
                     <div>
                         <div class="header__banner">
@@ -41,13 +41,10 @@ const Home = {
                     <img src="./images/ending_image.webp" alt="revire restaurant" />
                     <div>
                         <h2 class="text__roman text__thin text__primary">Want us to review your restaurant?</h2>
-                        <h6>
-
-                        </h6>
                         <h6 class="text__thin">
                             Your restaurant will be known, your culinary will be more famous and your business will grow.
                         </h6>
-                        <button class="bt bt__secondary" onclick="window.location.href='mailto:dicky.ech@gmail.com'" tabindex="5">Contact Us</button>
+                        <button class="bt bt__secondary" onclick="window.location.href='mailto:dicky.ech@gmail.com'" tabindex="3">Contact Us</button>
                     </div>
                 </div>
             </div>
