@@ -5,10 +5,8 @@ const restaurantListItem = ({
   id, name, description, city, rating, pictureId,
 }) => `
     <a href="/#/restaurant/${id}" class="product" tabindex="4">
-        <div class="product__img"
-            role="img" 
-            aria-label="${name}"
-            style="background-image: url('${CONFIG.BASE_IMAGE_URL}/${pictureId}')">
+        <div class="product__img">
+            <img src="./images/placeholder.gif" data-src="${CONFIG.BASE_IMAGE_URL}/${pictureId}" class="lazyload" alt="${name}" />
             <div class="product__rating">${rating}</div>
         </div>
         <div class="product__description">
@@ -21,7 +19,7 @@ const restaurantListItem = ({
 
 const menuListItem = ({ name, type }) => `
     <div>
-        <img src="./images/bg-${type}-default.webp" alt="default image ${type}"/>
+        <img src="./images/placeholder.gif" data-src="./images/bg-${type}-default.jpg" alt="default image ${type}" class="lazyload"/>
         <h6>${name}</h6>
         ${badge(type)}
     </div>  
@@ -30,7 +28,7 @@ const menuListItem = ({ name, type }) => `
 const reviewListItem = ({ name, review, date }) => `
     <div class="review">
         <div class="comment__container">
-            <img src="./images/icon-quote.webp" alt="quote icon" alt="icon quote" />
+            <img src="./images/placeholder.gif" data-src="./images/icon-quote.webp" alt="quote icon" alt="icon quote" class="lazyload"/>
             <h5 class="text__thin">${review}</h5>
         </div>
         <div class="comment__info">

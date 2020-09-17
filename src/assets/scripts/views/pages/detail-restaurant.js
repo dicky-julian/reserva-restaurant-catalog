@@ -33,13 +33,13 @@ const DetailRestaurant = {
                             ${isAddedFavorite
     ? `
                                 <div class="add__favorite" aria-label="delete favorite" role="button" tabindex="3">
-                                    <img src="./images/icon-delete.webp" alt="icon delete"/>
+                                    <img data-src="./images/icon-delete.webp" alt="icon delete" class="lazyload"/>
                                     <span class="text__danger text__bold">Remove from favorite</span>
                                 </div>
                                 `
     : `
                                 <div class="add__favorite" aria-label="add favorite" role="button" tabindex="3">
-                                    <img src="./images/icon-add.webp" alt="icon add"/>
+                                    <img data-src="./images/icon-add.jpg" alt="icon add" class="lazyload"/>
                                     <span class="text__default">Add to favorite</span>
                                 </div>
                             `
@@ -64,7 +64,7 @@ const DetailRestaurant = {
     }
     return `
             <div class="loading__container">
-                <img src="./images/loading-spinner.webp" alt="loading spinner" />
+                <img data-src="./images/loading-spinner.webp" alt="loading spinner" class="lazyload" />
             </div>
         `;
   },
@@ -109,11 +109,11 @@ const DetailRestaurant = {
 
       // eslint-disable-next-line no-plusplus
       for (let rating = 0; rating < ratings; rating++) {
-        el.innerHTML += '<img src="./images/icon-star-add.webp" alt="icon star rating" />';
+        el.innerHTML += '<img data-src="./images/icon-star-add.jpg" alt="icon star rating" class="lazyload"/>';
       }
 
       for (let rating = 0; rating < unChecklistRating; rating++) {
-        el.innerHTML += '<img src="./images/icon-star-remove.webp" alt="icon star rating" />';
+        el.innerHTML += '<img data-src="./images/icon-star-remove.jpg" alt="icon star rating" class="lazyload"/>';
       }
     });
   },
@@ -228,7 +228,7 @@ const DetailRestaurant = {
     await deleteFavorite(idRestaurant)
       .then(() => {
         buttonElement.setAttribute('aria-label', 'add favorite');
-        buttonImage.src = './images/icon-add.webp';
+        buttonImage.src = './images/icon-add.jpg';
         buttonElement.querySelector('span').remove();
         buttonElement.innerHTML += '<span class="text__default">Add to favorite</span>';
         alert('Succesfully removed from favorite', 'success');

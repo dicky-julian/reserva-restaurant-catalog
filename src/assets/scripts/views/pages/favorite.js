@@ -9,7 +9,7 @@ const Favorite = {
                 <h2 class="text__roman text__thin text__primary">Favorite Place</h2>
                 <div class="product__container"></div>
                 <a class="loading__container">
-                    <img src="./images/loading-spinner.webp" alt="loading spinner" />
+                    <img data-src="./images/loading-spinner.webp" alt="loading spinner" class="lazyload" />
                 </a>
             </div>
         `;
@@ -34,7 +34,7 @@ const Favorite = {
     checkElement('#favorite').then((el) => {
       el.innerHTML = `
                 <div class="information__container">
-                    <img src="./images/not-found.webp" alt="image no data here" />
+                    <img data-src="./images/not-found.jpg" alt="image no data here" class="lazyload" />
                 </div>
             `;
       el.style.backgroundColor = '#fff';

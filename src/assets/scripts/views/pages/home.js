@@ -10,18 +10,18 @@ const Home = {
                 <header>
                     <div>
                         <h1 class="text__roman text__thin text__primary" aria-label="The best place to kick off your day">The best place to kick off your day</h1>
-                        <h6 class="text__thin">
+                        <h2 class="text__thin subtitle">
                             Cheap, Locality, Seasonality and Accessibility restaurant in personal level just for you.
-                        </h6>
+                        </h2>
                         <button id="see__restaurant" class="bt bt__secondary" tabindex="5">See Restaurant</button>
                     </div>
                     <div>
                         <div class="header__banner">
-                            <img src="./product-icon-192.png" alt="reserva icon">
-                            <img src="./product-icon-192.png" alt="reserva icon">
+                            <img src="./images/placeholder.gif" data-src="./product-icon-192.png" alt="reserva icon" class="lazyload">
+                            <img src="./images/placeholder.gif" data-src="./product-icon-192.png" alt="reserva icon" class="lazyload">
                             <span></span>
-                            <img src="./images/food_cup_2.webp" alt="image cup of food" class="banner__cup">
-                            <img src="./images/food_cup_1.webp" alt="image cup of food" class="banner__cup">
+                            <img src="./images/placeholder.gif" data-src="./images/food_cup_2.webp" alt="image cup of food" class="banner__cup lazyload">
+                            <img src="./images/placeholder.gif" data-src="./images/food_cup_1.webp" alt="image cup of food" class="banner__cup lazyload">
                             <div></div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@ const Home = {
                     </div>
                 </div>
                 <div id="section__ending">
-                    <img src="./images/ending_image.webp" alt="revire restaurant" />
+                    <img src="./images/placeholder.gif" data-src="./images/ending_image.jpg" alt="revire restaurant" class="lazyload" />
                     <div>
                         <h2 class="text__roman text__thin text__primary">Want us to review your restaurant?</h2>
                         <h6 class="text__thin">
