@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
     "serve": "webpack --mode production --config webpack.common.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "test": "karma start"
   },
   "author": "Dicky Julian",
   "license": "ISC",

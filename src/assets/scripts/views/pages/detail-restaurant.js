@@ -29,7 +29,6 @@ const DetailRestaurant = {
                             <h6 class="text__thin text__justify">${description}</h6>
                             <div class="categories__container"></div>
                             <div class="rating__container"></div>
-                            
                             ${isAddedFavorite
     ? `
                                 <div class="add__favorite" aria-label="delete favorite" role="button" tabindex="3">
