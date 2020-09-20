@@ -75,7 +75,7 @@ const DetailRestaurant = {
       wrapper.innerHTML = await this.render(dataRestaurant);
 
       checkElement('.button__container').then((element) => {
-        FavoriteButtonInitiator.FavoriteButtonInitiator({
+        FavoriteButtonInitiator.init({
           favoriteButtonElement: element,
           restaurantData: dataRestaurant,
         });

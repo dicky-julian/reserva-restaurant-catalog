@@ -13,7 +13,10 @@ const fetchIdFavorite = (async () => {
   return dataIdFavorite;
 });
 
-const fetchFavoriteById = (async (idRestaurant) => (await dbPromise).get(storeName, idRestaurant));
+const fetchFavoriteById = (async (idRestaurant) => {
+  if (!idRestaurant) return;
+  return (await dbPromise).get(storeName, idRestaurant);
+});
 
 const addFavorite = (async (restaurant) => (await dbPromise).put(storeName, restaurant));
 

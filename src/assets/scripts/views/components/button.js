@@ -20,7 +20,7 @@ const addFavoriteButton = () => `
 `;
 
 const FavoriteButtonInitiator = {
-  async FavoriteButtonInitiator({ favoriteButtonElement, restaurantData }) {
+  async init({ favoriteButtonElement, restaurantData }) {
     this._favoriteButtonContainer = favoriteButtonElement;
     this._restaurantData = restaurantData;
 
@@ -31,10 +31,8 @@ const FavoriteButtonInitiator = {
     const { id } = this._restaurantData;
 
     if (await this._isRestaurantExist(id)) {
-      console.log('sudah');
       this._renderAdded();
     } else {
-      console.log('belum');
       this._renderAdd();
     }
   },
@@ -67,15 +65,9 @@ const FavoriteButtonInitiator = {
   },
 
   async addFavorite() {
-    console.log('add favorite');
     await addFavorite(this._restaurantData)
       .then(() => {
         this._renderAdded();
-        // const buttonElement = this._buttonElement;
-        // buttonElement.setAttribute('aria-label', 'delete favorite');
-        // buttonElement.querySelector('img').src = './images/icon-delete.webp';
-        // buttonElement.querySelector('span').remove();
-        // buttonElement.innerHTML += '<span class="text__danger text__bold">Remove from favorite</span>';
         alert('Succesfully added to favorite', 'success');
       })
       .catch((error) => {
@@ -85,16 +77,10 @@ const FavoriteButtonInitiator = {
   },
 
   async removeFavorite() {
-    console.log('remove favorite');
     const { id } = this._restaurantData;
     await deleteFavorite(id)
       .then(() => {
         this._renderAdd();
-        // const buttonElement = this._buttonElement;
-        // buttonElement.setAttribute('aria-label', 'add favorite');
-        // buttonElement.querySelector('img').src = './images/icon-add.jpg';
-        // buttonElement.querySelector('span').remove();
-        // buttonElement.innerHTML += '<span class="text__default">Add to favorite</span>';
         alert('Succesfully removed from favorite', 'success');
       })
       .catch((error) => {
