@@ -13,6 +13,8 @@ const fetchIdFavorite = (async () => {
   return dataIdFavorite;
 });
 
+const fetchFavoriteById = (async (idRestaurant) => (await dbPromise).get(storeName, idRestaurant));
+
 const addFavorite = (async (restaurant) => (await dbPromise).put(storeName, restaurant));
 
 const deleteFavorite = (async (idRestaurant) => (await dbPromise).delete(storeName, idRestaurant));
@@ -20,6 +22,7 @@ const deleteFavorite = (async (idRestaurant) => (await dbPromise).delete(storeNa
 export {
   fetchAllFavorite,
   fetchIdFavorite,
+  fetchFavoriteById,
   addFavorite,
   deleteFavorite,
 };
