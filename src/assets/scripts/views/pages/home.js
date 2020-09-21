@@ -20,8 +20,21 @@ const Home = {
                             <img src="./images/placeholder.gif" data-src="./product-icon-192.png" alt="reserva icon" class="lazyload">
                             <img src="./images/placeholder.gif" data-src="./product-icon-192.png" alt="reserva icon" class="lazyload">
                             <span></span>
-                            <img src="./images/placeholder.gif" data-src="./images/food_cup_2.webp" alt="image cup of food" class="banner__cup lazyload">
-                            <img src="./images/placeholder.gif" data-src="./images/food_cup_1.webp" alt="image cup of food" class="banner__cup lazyload">
+                            <img 
+                              srcset="./images/food_cup_2_500.webp 480w, ./images/food_cup_2.webp 800w"
+                              sizes="(max-width: 600px) 480px, 800px"
+                              src="./images/placeholder.gif" 
+                              data-src="./images/food_cup_2.webp" 
+                              alt="image cup of food" class="banner__cup lazyload"
+                            >
+                            <img 
+                              srcset="./images/food_cup_1_500.webp 480w, ./images/food_cup_1.webp 800w"
+                              sizes="(max-width: 600px) 480px, 800px"
+                              src="./images/placeholder.gif" 
+                              data-src="./images/food_cup_1.webp" 
+                              alt="image cup of food" 
+                              class="banner__cup lazyload"
+                            >
                             <div></div>
                         </div>
                     </div>
